@@ -1,0 +1,36 @@
+.warning {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  border-radius: 4px;
+  color: #856404;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.checkbox input {
+  cursor: pointer;
+}
+
+.checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.checkbox span {
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .warning {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+} 
