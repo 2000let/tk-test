@@ -11,9 +11,13 @@ export const fetchReposFx = async ({
   first?: number;
   after?: string | null;
 }): Promise<SearchReposResponse> => {
+  const searchQuery = query.trim() 
+    ? `${query} sort:updated-desc` 
+    : `user:${localStorage.getItem('github_username') || ''} sort:updated-desc`;
+
   const GET_REPOS = gql`
-    query SearchRepos($query: String!, $first: Int!, $after: String) {
-      search(query: $query, type: REPOSITORY, first: $first, after: $after) {
+    query SearchRepos($searchQuery: String!, $first: Int!, $after: String) {
+      search(query: $searchQuery, type: REPOSITORY, first: $first, after: $after) {
         edges {
           node {
             ... on Repository {
@@ -41,7 +45,7 @@ export const fetchReposFx = async ({
   try {
     const { data } = await client.query({
       query: GET_REPOS,
-      variables: { query, first, after },
+      variables: { searchQuery, first, after },
     });
     
     if (!data.search) {

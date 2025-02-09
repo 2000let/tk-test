@@ -6,10 +6,12 @@ const httpLink = createHttpLink({
 });
 
 const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('github_token');
+  
   return {
     headers: {
       ...headers,
-      authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`,
+      authorization: token ? `Bearer ${token}` : '',
     },
   };
 });

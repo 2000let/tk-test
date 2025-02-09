@@ -9,6 +9,7 @@ export default defineVitestConfig({
       "@": resolve(__dirname, "./src"),
     },
   },
+  base: "/tk-test/",
   test: {
     globals: true,
     environment: "jsdom",
