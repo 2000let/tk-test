@@ -3,6 +3,6 @@ import HomePage from "@/pages/home-page/HomePage";
 import RepoPage from "@/pages/repo-page/RepoPage";
 
 export const router = createBrowserRouter([
-  { path: "/", element: <HomePage /> },
-  { path: "/repo/:owner/:name", element: <RepoPage /> },
+  { path: "/tk-test/", element: <HomePage /> },
+  { path: "/tk-test/repo/:owner/:name", element: <RepoPage /> },
 ]);

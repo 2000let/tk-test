@@ -15,7 +15,7 @@ const RepoList: React.FC<RepoListProps> = ({ repos }) => {
         <li key={repo.id} className={styles.item}>
           <div className={styles.content}>
             <Link
-              to={`/repo/${repo.owner.login}/${repo.name}`}
+              to={`repo/${repo.owner.login}/${repo.name}`}
               className={styles.name}
             >
               {repo.name}

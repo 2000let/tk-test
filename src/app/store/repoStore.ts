@@ -20,9 +20,6 @@ export const useRepoStore = create<RepoStore>()(
       searchQuery: "",
       setSearchQuery: (query) => set({ 
         searchQuery: query,
-        currentPage: 1,
-        cursors: [],
-        totalPages: 1
       }),
       currentPage: 1,
       setCurrentPage: (page) => set({ currentPage: page }),

@@ -14,7 +14,7 @@ const RepoDetails: React.FC<RepoDetailsProps> = ({ repo }) => {
   return (
     <div className={styles.details}>
       <button 
-        onClick={() => navigate('/')} 
+        onClick={() => navigate('/tk-test/')} 
         className={styles.back}
       >
         ← Назад

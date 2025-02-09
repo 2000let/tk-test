@@ -25,7 +25,6 @@ const HomePage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const [pagesData, setPagesData] = useState<{ [key: number]: RepoNode[] }>({});
 
   const fetchPageData = async (pageNumber: number, cursor: string | null) => {
     const { edges, pageInfo } = await fetchReposFx({
@@ -39,7 +38,6 @@ const HomePage: React.FC = () => {
     setCursors(newCursors);
 
     const pageRepos = edges.map(edge => edge.node);
-    setPagesData(prev => ({ ...prev, [pageNumber]: pageRepos }));
 
     return {
       repos: pageRepos,
@@ -52,13 +50,6 @@ const HomePage: React.FC = () => {
     
     setIsLoading(true);
     try {
-      if (pagesData[page] && page < currentPage) {
-        setRepos(pagesData[page]);
-        setCurrentPage(page);
-        return;
-
-      }
-
       if (allowSkipPages && page > currentPage + 1) {
         let currentCursor = cursors[currentPage - 1];
         
@@ -101,7 +92,7 @@ const HomePage: React.FC = () => {
         
         const pageRepos = edges.map(edge => edge.node);
         setRepos(pageRepos);
-        setPagesData({ 1: pageRepos });
+        
         setTotalPages(Math.ceil(repositoryCount / 10));
 
         const newCursors = [...cursors];
